@@ -2,7 +2,7 @@
   "name": "regional-partnership-app",
   "private": true,
   "scripts": {
-    "build": "remix vite:build",
+    "build": "remix vite:build && mkdir -p ./app/build && cp -r ./build/* ./app/build/",
     "dev": "shopify app dev",
     "config:link": "shopify app config link",
     "generate": "shopify app generate",
