@@ -1,6 +1,8 @@
 import express from "express";
 import { createRequestHandler } from "@remix-run/express";
 import shopify from "./app/shopify.server.js";
+// Lägg till denna import
+import * as build from "./build/index.js";
 
 const app = express();
 app.use(express.static("public"));
@@ -21,7 +23,8 @@ app.all("*", async (req, res, next) => {
   }
 
   return createRequestHandler({
-    build: require("./build"),
+    // Ersätt require med den importerade build-modulen
+    build,
     mode: process.env.NODE_ENV
   })(req, res, next);
 });
