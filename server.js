@@ -13,11 +13,11 @@ app.all("*", async (req, res, next) => {
   if (shop) {
     res.setHeader(
       "Content-Security-Policy",
-      `frame-ancestors https://${shop} https://admin.shopify.com;`
+      `frame-ancestors https://${shop} https://admin.shopify.com https://1tmiwd-eq.myshopify.com;`
     );
   } else {
     // fallback om route inte är embedded
-    res.setHeader("Content-Security-Policy", "frame-ancestors 'none'");
+    res.setHeader("Content-Security-Policy", "frame-ancestors 'none' https://1tmiwd-eq.myshopify.com;");
   }
 
   return createRequestHandler({
@@ -27,4 +27,4 @@ app.all("*", async (req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`🚀 Server igång på port ${port}`)); 
+app.listen(port, () => console.log(`🚀 Server igång på port ${port}`));
