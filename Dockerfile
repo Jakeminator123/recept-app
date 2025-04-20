@@ -17,7 +17,6 @@ RUN npm remove @shopify/cli
 COPY . .
 
 RUN npm run build
-# Säkerställ att app/build finns och innehåller filerna
-RUN mkdir -p ./app/build && [ -d "./build" ] && cp -r ./build/* ./app/build/ || echo "build directory doesn't exist yet"
+# Tar bort överflödig kopiering eftersom vi använder ./build direkt
 
 CMD ["npm", "run", "docker-start"]
